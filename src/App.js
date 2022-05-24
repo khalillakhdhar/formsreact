@@ -8,7 +8,7 @@ age:''
 this.onChange = this.onChange.bind(this);
 this.handleSubmit = this.handleSubmit.bind(this);
 }
-onChange = e => {
+onChange = e => { // arrow function
   this.setState({ [e.target.name]: e.target.value });
   };
 handleSubmit(event) {
