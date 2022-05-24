@@ -2,24 +2,30 @@ import React, { Component } from 'react';
 class App extends React.Component {
 constructor(props) {
 super(props);
-this.state = {value: ''};
-this.handleChange = this.handleChange.bind(this);
+this.state = {data: '',
+age:''
+};
+this.onChange = this.onChange.bind(this);
 this.handleSubmit = this.handleSubmit.bind(this);
 }
-handleChange(event) {
-this.setState({value: event.target.value});
-}
+onChange = e => {
+  this.setState({ [e.target.name]: e.target.value });
+  };
 handleSubmit(event) {
-alert('You have submitted the input successfully: ' + this.state.value);
-event.preventDefault();
+alert('vous êtes ' + this.state.data+' vous avez '+this.state.age+' ans');
+//event.preventDefault();
 }
 render() {
   return (
   <form onSubmit={this.handleSubmit}>
-  <h1>Controlled Form Example</h1>
+  <h1>Bienvenu {this.state.data}</h1>
   <label>
-  Name:
-  <input type="text" value={this.state.value} onChange={this.handleChange} />
+  Name: 
+  <input type="text" name="data" value={this.state.data} onChange={this.onChange} />
+  </label>
+  <label>
+  Age: 
+  <input type="number" min="1" name="age" value={this.state.age} onChange={this.onChange} />
   </label>
   <input type="submit" value="Submit" />
   </form>
